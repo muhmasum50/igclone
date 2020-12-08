@@ -1,0 +1,53 @@
+@layout('layouts/app')
+
+@section('content')
+    
+    <section class="flex justify-center py-10">
+        <div class="" style="width:22rem">
+            <article class="border p-12 bg-white">
+                <h1>Instagram Clone</h1>
+                <h2>Sign up to see photos and videos from your friends.</h2>
+                <button>Login with Facebook</button>
+                <p>--------OR---------</p>
+                <form action="/daftar" method="post">
+                    {{ csrfField() }}
+                    <div>
+                        <label for=""></label>
+                        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1" type="text" placeholder="Nama Lengkap" name="nama" >
+                        @if(flashMessages.has('errors.nama'))
+                            <small>{{flashMessages.get('errors.nama')}}</small>
+                        @endif
+                    </div>
+                    <div >
+                        <label for=""></label>
+                        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1" placeholder="Email" type="text" name="email" >
+                        @if(flashMessages.has('errors.email'))
+                            <small>{{flashMessages.get('errors.email')}}</small>
+                        @endif
+                    </div>
+                    <div >
+                        <label for=""></label>
+                        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1" placeholder="Password" type="password" name="password" >
+                        @if(flashMessages.has('errors.password'))
+                            <small>{{flashMessages.get('errors.password')}}</small>
+                        @endif
+                    </div>
+                    <div >
+                        <label for=""></label>
+                        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1" placeholder="Conf Password" type="text" name="password_confirmation" >
+                    </div>
+                    
+                    <div>
+                        <button type="submit">Daftar</button>
+                    </div>
+                </form>
+                <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
+            </article>
+
+            <article class="border mt-5 text-center py-8 bg-white">
+                Have an account? <a href="http://" class="text-blue-500">Log in</a>
+            </article>
+        </div>
+    </section>
+    
+@endsection

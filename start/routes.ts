@@ -20,7 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.on('/').render('welcome')
+Route.on('/').render('welcome').middleware('auth')
+Route.on('/profil').render('v_profil').middleware('auth')
 
-Route.on('/daftar').render('daftar')
-Route.post('/daftar','RegistersController.store');
+Route.on('/daftar').render('auth/daftar')
+Route.on('/login').render('auth/v_login')
+
+Route.post('/daftar','AuthController.daftar')
+Route.post('/login', 'AuthController.login')
+Route.post('/logout', 'AuthController.logout')

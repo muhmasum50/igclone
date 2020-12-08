@@ -1,0 +1,31 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="container">
+        <div class="row" style="margin-top:50px;">
+            <div class="col-6">
+                <form action="/login" method="post">
+                    {{ csrfField() }}
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" name="email" class="form-control">
+                        @if(flashMessages.has('errors.email'))
+                            <small>{{flashMessages.get('errors.email')}}</small>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="password" name="password" class="form-control">
+                        @if(flashMessages.has('errors.password'))
+                            <small>{{flashMessages.get('errors.password')}}</small>
+                        @endif
+                    </div>
+                    
+                    <div>
+                        <button class="btn btn-primary btn-block" type="submit">Masuk</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
